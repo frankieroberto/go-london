@@ -1,0 +1,46 @@
+
+
+<article class="page">
+
+  <% if @duplicates.size > 0 %>
+
+    <p><%= pluralize(@duplicates.size, 'duplicate journey') %> discarded.</p>
+
+  <% end %>
+
+  <% if @lines.size > 0 %>
+
+    <p><%= pluralize(@lines.size, 'new journey') %> were added</p>
+
+    <table class="journeys">
+      <tr>
+        <th>Date</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>From</th>    
+        <th>To</th>    
+        <th>Distance</th>
+        <th>Speed</th>
+      </tr>
+      <% @lines.each do |line| %>
+        <tr>
+          <td><%= line.started_at.strftime("%e %b %Y") if line.started_at %></td>
+          <td><%= line.started_at.strftime('%H:%M') if line.started_at %></td>
+          <td><%= line.ended_at.strftime('%H:%M') if line.ended_at %></td>
+
+          <% if line.mode == 'bus' %>
+            <td colspan="2">Bus <%= line.bus_route %></td>
+          <% else %>
+            <td><%= line.start_name %></td>
+            <td><%= line.end_name %></td>
+          <% end %>
+
+          <td><%= distance_in_m(line.distance) %></td>
+          <td><%= speed_in_km(line.speed) %></td>
+        </tr>  
+      <% end %>
+    </table>
+
+  <% end %>
+
+</article>

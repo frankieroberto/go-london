@@ -1,0 +1,173 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+* {
+  margin: 0; padding: 0;
+}
+
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-top: 42px;
+  margin-bottom: 24px;
+  clear: both;
+}
+
+h2 {
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 32px
+}
+
+.leading-score {
+  text-align: center;
+}
+
+.stat {
+  font-size: 52px;
+  font-weight: bold;
+  margin: 0; padding: 0;
+}
+
+.details {
+  font-size: 32px;
+}
+
+.bus-numbers {
+  width: 440px;
+  margin: 0 auto;
+}  
+
+.bus-numbers:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 900px) {
+  .bus-numbers {
+    width: 880px ;
+  }  
+}
+
+
+.number {
+  display: block;
+  float: left;
+  margin: 3px;
+  background: #DDD;
+  color: #333;
+  width: 38px; height: 38px;
+  line-height: 38px;
+  border-radius: 19px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.missing-number {
+  display: block;
+  float: left;
+  margin: 3px;
+  width: 38px; height: 38px;
+  line-height: 38px;
+  border-radius: 19px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.done {
+  background-color: #F00;
+  color: #EEE;
+}
+
+.journeys {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.journeys th {
+  text-align: left;
+}
+
+.journeys td {
+  border-width: 0 0 1px 0;
+  border-color: lightsteelblue;
+  border-style: solid;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.leaderboard {
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto 20px auto;
+  font-size: 16px;
+  border-collapse: collapse;
+}
+
+.leaderboard th {
+  border: 2px solid #444;
+  line-height: 24px;
+  padding: 4px;
+  background-color: #444;
+  color: #FFF;  
+}
+
+
+.leaderboard td {
+  border: 2px solid #EEE;
+  line-height: 24px;
+  padding: 4px;
+}
+
+.leaderboard .speed {
+  font-weight: bold;
+}
+
+.leaderboard .station {
+  font-weight: bold;
+}
+
+.leaderboard .date {
+  color: #999;
+}
+
+.air-line {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.air-line td,
+.air-line th {
+  text-align: center;
+}
+
+.air-line .count {
+  display: inline-block;
+  line-height: 100px;
+  font-size: 60px;
+  width: 100px;
+  height: 100px;
+  background: black;
+  color: white;
+  border-radius: 50px;
+}

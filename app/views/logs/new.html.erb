@@ -1,0 +1,10 @@
+<h1>Upload CSV travel logs</h1>
+
+
+<%= form_tag logs_path, multipart: true do %>
+
+  <%= file_field_tag :file %>
+
+  <%= content_tag 'button', 'Upload', :type => :submit %>
+
+<% end %>

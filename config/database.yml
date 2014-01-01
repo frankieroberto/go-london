@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: golondon
+  host: localhost
+  min_messages: warning
+
+test:
+  adapter: postgresql
+  database: golondon_test
+  host: localhost
+  min_messages: warning

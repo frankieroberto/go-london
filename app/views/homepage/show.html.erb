@@ -1,0 +1,74 @@
+<div class="page">
+  <h1>Frankie’s GO-London</h1>
+
+
+  <% if @fastest_journeys.size > 0 %>
+
+    <h2>Tube and Rail</h2>
+  
+    <table class="leaderboard">
+
+      <tr>
+        <th>Speed</th>
+        <th>Journey</th>
+      </tr>
+      <% @fastest_journeys.each do |journey| %>
+        <tr>
+          <td><span class="speed"><%= number_with_precision(journey.speed, :precision => 2) %></span> km/h</td>
+          <td>
+            <span class="station"><%= journey.start_name %></span> – <span class="station"><%= journey.end_name %></span> 
+            <span class="date"><%= journey.started_at.to_s(:short) %></span>
+            <span class="date"><%= journey.minutes_taken %> min</span>
+
+        </td>
+        </tr>
+      <% end %>
+
+    </table>
+
+  <% end %>
+
+
+  <% if @bus_numbers.size > 0 %>
+    <h2 class="bus">Bus</h2>
+
+    <div class="bus-numbers">
+
+      <% missing_numbers = [84, 278, 301, 304, 306, 310, 311] %>
+
+      <% 1.upto(599) do |number| %>
+
+
+        <% html_class = 'done' if @bus_numbers.include?(number.to_s) %>
+
+        <% if missing_numbers.include?(number) %>
+          <span class="missing-number"></span>
+        <% else %>
+          <span class="number <%= html_class%>"><%= number %></span>
+        <% end %>
+      <% end %>
+
+    </div>
+  <% end %>
+
+  <% if @air_line_journeys.size > 0 %>
+    
+    <h2>Air Line</h2>
+
+    <table class="air-line">
+      <tr>
+        <% @air_line_journeys.each do |journey| %>
+          <th><%= journey[0] %></th>
+        <% end %>
+      </tr>
+      <tr>
+        <% @air_line_journeys.each do |journey| %>
+          <td><span class="count"><%= journey[1] %></span></td>
+        <% end %>
+      </tr>
+    </table>
+
+  <% end %>
+
+  
+</div>
