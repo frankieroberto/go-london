@@ -2,7 +2,7 @@
   <h1>Frankie’s GO-London</h1>
 
 
-  <% if @fastest_journeys.size > 0 %>
+  <% if @fastest_journeys %>
 
     <h2>Tube and Rail</h2>
   
@@ -31,8 +31,12 @@
   <% end %>
 
 
+  <%= debug @count2 %>
+
+
   <% if @bus_numbers.size > 0 %>
     <h2 class="bus">Bus</h2>
+
 
     <div class="bus-numbers">
 
@@ -40,8 +44,7 @@
 
       <% 1.upto(599) do |number| %>
 
-
-        <% html_class = 'done' if @bus_numbers.include?(number.to_s) %>
+        <% html_class = "done count-#{@bus_numbers[number.to_s]}" if @bus_numbers.include?(number.to_s) %>
 
         <% if missing_numbers.include?(number) %>
           <span class="missing-number"></span>
