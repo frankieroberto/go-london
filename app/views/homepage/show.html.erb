@@ -10,11 +10,13 @@
 
       <tr>
         <th>Speed</th>
+        <th>Distance</th>
         <th>Journey</th>
       </tr>
       <% @fastest_journeys.each do |journey| %>
         <tr>
           <td><span class="speed"><%= number_with_precision(journey.speed, :precision => 2) %></span> km/h</td>
+          <td><%= distance_in_m(journey.distance) %></td>
           <td>
             <span class="station"><%= journey.start_name %></span> – <span class="station"><%= journey.end_name %></span> 
             <span class="date"><%= journey.started_at.to_s(:short) %></span>
