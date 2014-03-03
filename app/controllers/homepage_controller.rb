@@ -13,7 +13,6 @@ class HomepageController < ApplicationController
       @bus_numbers[k] = ((v * 10).to_f / max_count).round
     end
 
-
     @air_line_journeys = Journey.where('mode' => 'air-line').count(:group => 'start_name')
 
   end
