@@ -15,15 +15,15 @@ class JourneyTest < ActiveSupport::TestCase
   end
 
 
-  test "parsing a tube description" do
+  test "parsing a train description" do
 
-    journey = Journey.new(:original_description => "Old Street to Bethnal Green [London Underground]")
+    journey = Journey.new(:original_description => "West India Quay DLR to Bethnal Green [London Underground]")
     journey.valid?
 
     assert_equal 'train', journey.mode
     assert_equal nil, journey.bus_route
-    assert_equal [51.52618,-0.08751], journey.start_point
-    assert_equal 'Old Street', journey.start_name
+    assert_equal [51.5068793769,-0.0204491615], journey.start_point
+    assert_equal 'West India Quay', journey.start_name
 
     assert_equal 'Bethnal Green', journey.end_name
     assert_equal [51.52718,-0.05504], journey.end_point

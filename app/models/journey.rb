@@ -116,6 +116,7 @@ class Journey < ActiveRecord::Base
 
   def parse_stop_name(name)
 
+    name = name.gsub(/\sDLR\z/, '')
     name = name.gsub(/\s+\[.+\]/, '')
     name = name.gsub(/\s\(.+\)/, '')
  
