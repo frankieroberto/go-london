@@ -78,6 +78,10 @@ class Journey < ActiveRecord::Base
 
       self.mode = 'bus'
       self.bus_route = original_description[bus_route_regex, 1]
+
+    elsif original_description == 'Riverboat ticket bought using pay as you go'
+
+      self.mode = 'riverboat'
     
     elsif original_description =~ air_line_regex
 

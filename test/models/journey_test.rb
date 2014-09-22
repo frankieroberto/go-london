@@ -86,6 +86,19 @@ class JourneyTest < ActiveSupport::TestCase
 
   end
 
+
+  test "parsing a riverboat description" do
+
+    journey = Journey.new(:original_description => 'Riverboat ticket bought using pay as you go')
+    journey.valid?
+
+    assert_equal 'riverboat', journey.mode
+    assert_nil journey.bus_route
+    assert_nil journey.start_name
+    assert_nil journey.end_name
+
+  end
+
   test "rejecting a top-up" do
 
     journey = Journey.new(:original_description => "Auto top-up, South Kensington")
