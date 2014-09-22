@@ -94,4 +94,12 @@ class JourneyTest < ActiveSupport::TestCase
 
   end
 
+  test "rejecting a refund" do
+
+    journey = Journey.new(:original_description => "Automated Refund, Highbury & Islington")
+
+    assert !journey.valid?
+
+  end
+
 end

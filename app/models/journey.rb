@@ -13,14 +13,15 @@ class Journey < ActiveRecord::Base
 #  validates :start_point, :format => {:with => POINT_REGEX, :allow_nil => true }
 #  validates :end_point, :format => {:with => POINT_REGEX, :allow_nil => true }
 
-  validate :original_description_shouldnt_be_auto_topup
-
+  validate :original_description_shouldnt_be_financial
   private
 
-  def original_description_shouldnt_be_auto_topup
+  def original_description_shouldnt_be_financial
 
     if original_description =~ /Auto top-up/
       errors.add(:base, 'Journey looks like an auto-top up')
+    elsif original_description =~ /\AAutomated Refund,/
+      errors.add(:base, 'Journey looks a refund')      
     end
 
   end
@@ -88,7 +89,7 @@ class Journey < ActiveRecord::Base
       elsif original_description == "Emirates Air Line ticket bought using pay as you go, Emirates Greenwich Peninsula"
         self.start_name = 'Greenwich Peninsula'
         self.end_name = 'Royal Docks'
-      end      
+      end   
 
     elsif original_description =~ tube_route_regex
 
