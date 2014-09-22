@@ -102,8 +102,8 @@ class Journey < ActiveRecord::Base
 
     end
 
-    self.start_point = GEOLOCATIONS[start_name] if GEOLOCATIONS[start_name]
-    self.end_point = GEOLOCATIONS[end_name] if GEOLOCATIONS[end_name]
+    self.start_point = GEOLOCATIONS[start_name].split(',').map(&:to_f) if GEOLOCATIONS[start_name]
+    self.end_point = GEOLOCATIONS[end_name].split(',').map(&:to_f) if GEOLOCATIONS[end_name]
 
 
   end
