@@ -116,9 +116,16 @@ class Journey < ActiveRecord::Base
 
   def parse_stop_name(name)
 
+    name = name.gsub(/\[No touch-out\]/, '')
     name = name.gsub(/\sDLR\z/, '')
     name = name.gsub(/\s+\[.+\]/, '')
     name = name.gsub(/\s\(.+\)/, '')
+
+    if name.blank?
+      nil
+    else
+      name
+    end
  
   end
 

@@ -59,6 +59,20 @@ class JourneyTest < ActiveSupport::TestCase
 
   end
 
+  test "parsing a train/tube description with no touch-out" do
+
+    journey = Journey.new(:original_description => "Angel to [No touch-out]")
+    journey.valid?
+
+    assert_equal 'train', journey.mode
+    assert_equal nil, journey.bus_route
+    assert_equal 'Angel', journey.start_name
+    assert_equal nil, journey.end_name
+
+  end
+
+
+
   test "parsing an Air Line journey" do
 
     journey = Journey.new(:original_description => "Emirates Air Line ticket bought using pay as you go, Emirates Royal Docks")
